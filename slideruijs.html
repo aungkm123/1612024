@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .wrap {
+        position: relative;
+        max-width: 1200px;
+        margin: 40px auto;
+
+    }
+
+    .box {
+        height: 300px;
+        font-size: 3em;
+        text-align: center;
+        line-height: 300px;
+    }
+    #box1 {
+        background: goldenrod;
+    }
+    #box2 {
+        background: darkgreen;
+        display: none;
+    }
+    #box3 {
+        background: darkred;
+        display: none;
+    }
+    #prev, #next {
+        position: absolute;
+        top: 42%;
+        font-size: 2em;
+        background: transparent;
+        border: 0 none;
+        opacity: 0.5;
+    }
+    #prev {
+        left: 20px;
+    }
+    #next {
+        right: 20px;
+    }
+
+</style>
+<body>
+    <div class="wrap">
+        <button id="prev">&laquo; </button>
+        <button id="next">&raquo;</button>
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+    </div>
+
+    <script>
+        document.querySelector("#prev").onclick = prev;
+        document.querySelector("#next").onclick = next;
+
+        setInterval(next, 3000);
+
+        var box = 1;
+
+
+        function prev() {
+            document.querySelector("#box" + box).style.display = "none";
+            box--;
+            if(box < 1) box = 3;
+            document.querySelector("#box" + box).style.display = "block";
+        }
+
+        function next() {
+            document.querySelector("#box" + box).style.display = "none";
+            box++;
+            if(box > 3) box = 1;
+            document.querySelector("#box" + box).style.display = "block";
+        }
+    </script>
+</body>
+</html>
